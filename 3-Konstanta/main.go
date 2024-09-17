@@ -14,4 +14,25 @@ func main(){
 
 	// fmt println
 	fmt.Println("halooo banggg")
+
+	// multi constanta
+	const (
+		circle	= "Lingkarang"
+		isToday bool = false
+		number uint8 = 33
+		floatNumber = 2.2
+	)
+	fmt.Println(circle, isToday, number, floatNumber)
+
+	// multi constanta with same value
+	const (
+		z = "Heyyy"
+		x
+	)	
+	fmt.Println(z, x)
+
+	// multi constanta with one line
+	const satu, dua = 1, 2
+	const two, five uint8 = 2, 5
+	fmt.Println(satu, dua, two, five)
 }
