@@ -30,4 +30,17 @@ func main() {
 	case false:
 		fmt.Println("letter 'a is not in the name")
 	}
+
+	// example with fallthrough
+	a := strings.Count(name, "a")
+	switch {
+	case (a > 1) && (a < 4):
+		fmt.Println("Yes > 1 & < 3")
+		fallthrough
+	case a == 3:
+		fmt.Println("a == 3")
+	default: {
+		fmt.Println("not compatible")
+	}
+	}
 }
