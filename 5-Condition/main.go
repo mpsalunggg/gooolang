@@ -39,8 +39,9 @@ func main() {
 		fallthrough
 	case a == 3:
 		fmt.Println("a == 3")
-	default: {
-		fmt.Println("not compatible")
-	}
+	default:
+		{
+			fmt.Println("not compatible")
+		}
 	}
 }
