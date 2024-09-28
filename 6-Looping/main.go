@@ -26,4 +26,15 @@ func main() {
 			break
 		}
 	}
+	// Looping with range num
+	// Error cannot range over 5 , change to use array works
+	var test = []int{0, 1, 2, 3, 4} 
+	for i, _ := range test {
+		fmt.Println(i)
+	}
+
+	var xs = "123"
+	for i, v := range xs {
+    	fmt.Println("Index=", i, "Value=", v)
+	}
 }
