@@ -16,4 +16,10 @@ func main() {
 	fmt.Println("Jumlah element \t\t", len(animal))
 	fmt.Println("Isi semua element \t", animal)
 
+	// without the number of elements
+	var num = [...]int{2, 3, 4, 5}
+	fmt.Println("jumlah elemen \t:", len(num))
+	fmt.Println(num[0])
+
+	
 }
