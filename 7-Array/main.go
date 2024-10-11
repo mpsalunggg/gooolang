@@ -21,5 +21,14 @@ func main() {
 	fmt.Println("jumlah elemen \t:", len(num))
 	fmt.Println(num[0])
 
-	
+	// Array multindimention
+	// var a = [2][3]int{[3]int{2, 3, 4}, [3]int{2, 3, 4}} redundant
+	var a = [2][3]int{{2, 3, 4}, {2, 3, 4}}
+	fmt.Println(a[0][1])
+
+	// Array looping
+	var fruits = [3]string{"Banana", "Apple", "Grape"}
+	for i := 0; i < len(fruits);i++ {
+		 fmt.Printf("elemen %d : %s\n", i, fruits[i])
+	}
 }
