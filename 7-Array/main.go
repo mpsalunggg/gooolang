@@ -35,4 +35,11 @@ func main() {
 	for _, fruit := range fruits {
 		fmt.Printf("nama buah : %s\n", fruit)
 	}
+
+	var fruits2 = make([]string, 2)
+	fruits2[0] = "Pisang bruh"
+	fruits2[1] = "Apel"
+	// fruits2[3] = "Apa enak" //error
+	fmt.Println(fruits2)
+
 }
