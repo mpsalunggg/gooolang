@@ -28,7 +28,11 @@ func main() {
 
 	// Array looping
 	var fruits = [3]string{"Banana", "Apple", "Grape"}
-	for i := 0; i < len(fruits);i++ {
-		 fmt.Printf("elemen %d : %s\n", i, fruits[i])
+	for i := 0; i < len(fruits); i++ {
+		fmt.Printf("elemen %d : %s\n", i, fruits[i])
+	}
+
+	for _, fruit := range fruits {
+		fmt.Printf("nama buah : %s\n", fruit)
 	}
 }
