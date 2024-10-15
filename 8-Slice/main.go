@@ -9,7 +9,6 @@ func main() {
 
 	fmt.Println(newFruits)
 
-
 	// Relation Array with Slice
 	var new_fruits = []string{"apple", "grape", "banana", "melon"}
 	fmt.Println(new_fruits[0:2])
@@ -19,4 +18,16 @@ func main() {
 	fmt.Println(new_fruits[:2])
 	fmt.Println(new_fruits[2:])
 
+	// Slice references
+	var animals = []string{"monkey", "lion", "cat", "turtle"}
+	var animals1 = animals[0:3] // monkey, lion, cat
+	var animals2 = animals[1:4] // lion, cat, turtle
+
+	var animals12 = animals1[0:2] // monkey, lion
+	var animals22 = animals2[0:1] // lion
+
+	fmt.Println(animals1)
+	fmt.Println(animals2)
+	fmt.Println(animals12)
+	fmt.Println(animals22)
 }
