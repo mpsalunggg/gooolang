@@ -30,4 +30,14 @@ func main() {
 	fmt.Println(animals2)
 	fmt.Println(animals12)
 	fmt.Println(animals22)
+
+	// len & cap
+	fmt.Println(len(animals)) //4
+	fmt.Println(cap(animals)) //4
+
+	fmt.Println(len(animals1)) //3
+	fmt.Println(cap(animals1)) //4
+
+	fmt.Println(len(animals12)) //2
+	fmt.Println(cap(animals12)) //4
 }
