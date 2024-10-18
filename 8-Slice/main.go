@@ -40,4 +40,22 @@ func main() {
 
 	fmt.Println(len(animals12)) //2
 	fmt.Println(cap(animals12)) //4
+
+	// append slice
+	var people = []string{"Andi", "Aba", "Aco"}
+	var new_people = append(people, "Ali")
+	fmt.Println(new_people)
+
+	// another example append
+	var object = []string{"Besi", "Garpu", "Tali"}
+	var object_new = object[0:2]
+
+	fmt.Println("append", cap(object_new))
+	fmt.Println("append", len(object_new))
+
+	var object_new_2 = append(object_new, "Benang")
+
+	fmt.Println(object) // Besi Garpu Benang
+	fmt.Println(object_new) // Besi Garpu
+	fmt.Println(object_new_2) // Besi Garpu Benang
 }
