@@ -55,7 +55,15 @@ func main() {
 
 	var object_new_2 = append(object_new, "Benang")
 
-	fmt.Println(object) // Besi Garpu Benang
-	fmt.Println(object_new) // Besi Garpu
+	fmt.Println(object)       // Besi Garpu Benang
+	fmt.Println(object_new)   // Besi Garpu
 	fmt.Println(object_new_2) // Besi Garpu Benang
+
+	dst := make([]string, 3)
+	src := []string{"Ali", "Banee", "Mps"}
+	n := copy(dst, src)
+
+	fmt.Println(dst)
+	fmt.Println(src)
+	fmt.Println(n)
 }
