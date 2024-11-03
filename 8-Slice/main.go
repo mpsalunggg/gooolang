@@ -66,4 +66,15 @@ func main() {
 	fmt.Println(dst)
 	fmt.Println(src)
 	fmt.Println(n)
+
+	fmt.Println("--------")
+	// cap again
+	var new_object = []string{"TRI", "CIPTA", "MUTI", "ADLIM"}
+	// fmt.Println(len(new_object))
+	// fmt.Println(cap(new_object))
+
+	new_object_1 := new_object[2:3:4]
+	fmt.Println(new_object_1)
+	fmt.Println(len(new_object_1)) 
+	fmt.Println(cap(new_object_1))
 }
