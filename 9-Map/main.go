@@ -24,4 +24,14 @@ func main() {
 
 	fmt.Println(month)
 	// fmt.Println(month2)
+
+	var chicken = map[string]int{
+		"katsu":  2,
+		"rembo":  3,
+		"geprek": 5,
+	}
+
+	for key, val := range chicken {
+		fmt.Println(key, "  \t:", val)
+	}
 }
