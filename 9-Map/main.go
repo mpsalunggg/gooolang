@@ -67,4 +67,8 @@ func main() {
 	}
 
 	fmt.Println(chickens)
+
+	for _, item := range chickens {
+		fmt.Println("Name -> ", item["name"], " ", "Gender -> ", item["gender"])
+	}
 }
