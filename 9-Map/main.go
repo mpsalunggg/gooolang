@@ -34,4 +34,11 @@ func main() {
 	for key, val := range chicken {
 		fmt.Println(key, "  \t:", val)
 	}
+
+	var cow = map[string]string{}
+	cow["1"] = "Test"
+	cow["2"] = "Test2"
+
+	fmt.Println(cow)
+	delete(cow, "1")
 }
