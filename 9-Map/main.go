@@ -51,4 +51,20 @@ func main() {
 	} else {
 		fmt.Println("Item is not exist")
 	}
+
+	// Array slice combine map
+
+	// chickens := []map[string]string{
+	// 	map[string]string{"name": "chicken blue", "gender": "male"},
+	// 	map[string]string{"name": "chicken red", "gender": "female"},
+	// }
+	// the code above is redundant
+
+	// this code is not redundant, better use this code
+	chickens := []map[string]string{
+		{"name": "chicken blue", "gender": "male"},
+		{"name": "chicken red", "gender": "female"},
+	}
+
+	fmt.Println(chickens)
 }
