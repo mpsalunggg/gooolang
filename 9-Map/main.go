@@ -35,10 +35,20 @@ func main() {
 		fmt.Println(key, "  \t:", val)
 	}
 
+	// Delete Object Key
 	var cow = map[string]string{}
 	cow["1"] = "Test"
 	cow["2"] = "Test2"
 
 	fmt.Println(cow)
 	delete(cow, "1")
+
+	// Detect Item With Key
+	value, isExist := chicken["katsu"]
+
+	if isExist {
+		fmt.Println("value:", value)
+	} else {
+		fmt.Println("Item is not exist")
+	}
 }
