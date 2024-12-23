@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"math/rand"
 	"strings"
 	"time"
@@ -30,4 +31,11 @@ func add(a int, b int) int {
 func randomNew() {
 	num := rand.New(rand.NewSource(time.Now().Unix()))
 	fmt.Println(num)
+}
+
+// function multiple return
+func calculate(d float64) (float64, float64) {
+	var area = math.Pi * math.Pow(d/2, 2)
+	var circumference = math.Pi * d
+	return circumference, area
 }
