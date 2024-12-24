@@ -39,3 +39,10 @@ func calculate(d float64) (float64, float64) {
 	var circumference = math.Pi * d
 	return circumference, area
 }
+
+// function predefined value
+func calculate2(d float64) (area float64, circumference float64) {
+	area = math.Pi * math.Pow(d/2, 2)
+	circumference = math.Pi * d
+	return
+}
