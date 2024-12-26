@@ -14,6 +14,9 @@ func main() {
 	addNum := add(2, 3)
 	fmt.Println(addNum)
 	randomNew()
+	calculate(2)
+	calculate2(3)
+	fmt.Println("rata-rata", average(2, 2, 2, 3, 1, 2, 3))
 }
 
 func callName(message string, names []string) string {
@@ -45,4 +48,15 @@ func calculate2(d float64) (area float64, circumference float64) {
 	area = math.Pi * math.Pow(d/2, 2)
 	circumference = math.Pi * d
 	return
+}
+
+// function variadic
+func average(num ...int) float64 {
+	var total int = 0
+	for _, number := range num {
+		total += number
+	}
+
+	num_average := float64(total) / float64(len(num))
+	return num_average
 }
