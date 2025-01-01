@@ -17,6 +17,7 @@ func main() {
 	calculate(2)
 	calculate2(3)
 	fmt.Println("rata-rata", average(2, 2, 2, 3, 1, 2, 3))
+	myAge()
 }
 
 func callName(message string, names []string) string {
@@ -59,4 +60,14 @@ func average(num ...int) float64 {
 
 	num_average := float64(total) / float64(len(num))
 	return num_average
+}
+
+// function variadic with slice
+func myAge() {
+	numbers := []int{1, 2, 3, 4, 10}
+	total := average(numbers...)
+
+	message := fmt.Sprintf("Rata rata: %.2f", total)
+
+	fmt.Println(message)
 }
