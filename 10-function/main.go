@@ -10,6 +10,7 @@ import (
 
 func main() {
 	names := []string{"Putra", "Satria"}
+	hobbies := []string{"Basket", "Coding", "Game"}
 	callName("Haiii, ", names)
 	addNum := add(2, 3)
 	fmt.Println(addNum)
@@ -18,6 +19,7 @@ func main() {
 	calculate2(3)
 	fmt.Println("rata-rata", average(2, 2, 2, 3, 1, 2, 3))
 	myAge()
+	myHobbies("Alunggg", hobbies)
 }
 
 func callName(message string, names []string) string {
@@ -70,4 +72,10 @@ func myAge() {
 	message := fmt.Sprintf("Rata rata: %.2f", total)
 
 	fmt.Println(message)
+}
+
+func myHobbies(name string, hobbies []string) {
+	concateHobbies := strings.Join(hobbies, ", ")
+
+	fmt.Println("Hello my name is: ", name, " My Hobbies are : ", concateHobbies)
 }
