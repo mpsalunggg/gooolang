@@ -7,6 +7,16 @@ func main() {
 	getMinMax()
 	countNum()
 	countNumSlice()
+	fmt.Println("======")
+	counter := getCounter()
+	fmt.Println(counter())
+	fmt.Println(counter())
+	fmt.Println(counter())
+	fmt.Println("======")
+	visitNum([]int{1, 2, 3, 4, 5}, func(num int) {
+		fmt.Println(num)
+	})
+	fmt.Println("======")
 }
 
 // Closure with variable
@@ -52,4 +62,20 @@ func countNumSlice() {
 		return result
 	}(allNum)
 	fmt.Printf("Total: %d\n", count)
+}
+
+// Closure as Return Value
+func getCounter() func() int {
+	counter := 0
+	return func() int {
+		counter++
+		return counter
+	}
+}
+
+// Closure as Argument or Callback
+func visitNum(numbers []int, callback func(int)) {
+	for _, e := range numbers {
+		callback(e)
+	}
 }
