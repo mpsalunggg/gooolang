@@ -6,6 +6,7 @@ func main() {
 	fmt.Println("FUNCTION CLOSURE")
 	getMinMax()
 	countNum()
+	countNumSlice()
 }
 
 // Closure with variable
@@ -38,4 +39,17 @@ func countNum() {
 	}(2, 4)
 
 	fmt.Println(result)
+}
+
+// Immediately-Invoked Function Expression with Slice
+func countNumSlice() {
+	allNum := []int{2, 1, 3, 4, 1}
+	count := func(num []int) int {
+		var result int
+		for _, e := range num {
+			result += e
+		}
+		return result
+	}(allNum)
+	fmt.Printf("Total: %d\n", count)
 }
