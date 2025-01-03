@@ -5,6 +5,7 @@ import "fmt"
 func main() {
 	fmt.Println("FUNCTION CLOSURE")
 	getMinMax()
+	countNum()
 }
 
 // Closure with variable
@@ -28,4 +29,13 @@ func getMinMax() {
 	min, max := resultMinMax(numbers)
 	fmt.Println("data min: ", min)
 	fmt.Println("data max: ", max)
+}
+
+// Immediately-Invoked Function Expression
+func countNum() {
+	result := func(a, b int) int {
+		return a + b
+	}(2, 4)
+
+	fmt.Println(result)
 }
