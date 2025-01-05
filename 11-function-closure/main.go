@@ -17,6 +17,13 @@ func main() {
 		fmt.Println(num)
 	})
 	fmt.Println("======")
+
+	listFruits := []string{"apple", "banana", "grape", "orange", "melon"}
+	checkString := func(str string) bool {
+		return len(str) > 5
+	}
+
+	filterStrings(listFruits, checkString)
 }
 
 // Closure with variable
@@ -78,4 +85,17 @@ func visitNum(numbers []int, callback func(int)) {
 	for _, e := range numbers {
 		callback(e)
 	}
+}
+
+// Closure with Strings using Type Alias
+type StringFilterCallback func(string) bool
+
+func filterStrings(strings []string, callback StringFilterCallback) []string {
+	var result []string
+	for _, str := range strings {
+		if callback(str) {
+			result = append(result, str)
+		}
+	}
+	return result
 }
