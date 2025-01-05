@@ -25,9 +25,21 @@ func main() {
 	changeValue(&numberC)
 	fmt.Println("After", numberC)
 	fmt.Println("numberC:", &numberC)
+	fmt.Println("======")
+	// Swap value
+	numberD := 4
+	numberE := 5
+	fmt.Println("Before", numberD, numberE)
+	swapValue(&numberD, &numberE)
+	fmt.Println("After", numberD, numberE)
 }
 
-// Pointer with parameter
 func changeValue(number *int) {
 	*number = 100
+}
+
+func swapValue(numA, numB *int) {
+	temp := *numA
+	*numA = *numB
+	*numB = temp
 }
