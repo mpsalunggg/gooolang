@@ -14,4 +14,15 @@ func main() {
 	personA.Name = "John"
 	personA.Age = 20
 	fmt.Println(personA)
+
+	// Anonymous Struct
+	var personB = struct {
+		Name string
+		Age  int
+	}{
+		Name: "Jane",
+		Age:  22,
+	}
+	fmt.Println(personB)
+
 }
