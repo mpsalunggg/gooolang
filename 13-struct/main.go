@@ -25,4 +25,7 @@ func main() {
 	}
 	fmt.Println(personB)
 
+	// All Initialize Struct
+	var personC = Person{Name: "Doe", Age: 24}
+	fmt.Println(personC)
 }
