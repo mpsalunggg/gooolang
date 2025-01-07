@@ -39,5 +39,16 @@ func main() {
 	fmt.Println(personC)
 	fmt.Println(personC.Name)
 	fmt.Println(personC.Age)
-	
+
+	fmt.Println("=====================================")
+	var person1 = Person{Name: "Doe", Age: 24}
+
+	var person2 *Person = &person1
+	fmt.Println("student 1, name :", person1.Name)
+	fmt.Println("student 4, name :", person2.Name)
+
+	person2.Name = "Smith"
+	fmt.Println("student 1, name :", person1.Name)
+	fmt.Println("student 4, name :", person2.Name)
+
 }
