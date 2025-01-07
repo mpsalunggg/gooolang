@@ -32,4 +32,12 @@ func main() {
 	fmt.Println(s2)
 	var s3 = Person{"Doe", 24}
 	fmt.Println(s3)
+
+	fmt.Println("=====================================")
+	// Struct with pointer
+	var personC = &Person{"Doe", 24}
+	fmt.Println(personC)
+	fmt.Println(personC.Name)
+	fmt.Println(personC.Age)
+	
 }
