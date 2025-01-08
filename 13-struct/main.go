@@ -51,4 +51,23 @@ func main() {
 	fmt.Println("student 1, name :", person1.Name)
 	fmt.Println("student 4, name :", person2.Name)
 
+	// Embeded Struct
+	type Address struct {
+		City, Province, Country string
+	}
+	type Contact struct {
+		Phone, Email string
+		Address
+	}
+
+	var contact1 = Contact{}
+	contact1.Phone = "0821-2222-3333"
+	contact1.Email = "people @gmail.com"
+	contact1.Address.City = "Jakarta"
+	contact1.Address.Province = "DKI Jakarta"
+	contact1.Address.Country = "Indonesia"
+
+	fmt.Println(contact1)
+	fmt.Println(contact1.Phone)
+
 }
