@@ -62,7 +62,7 @@ func main() {
 
 	var contact1 = Contact{}
 	contact1.Phone = "0821-2222-3333"
-	contact1.Email = "people @gmail.com"
+	contact1.Email = "people@gmail.com"
 	contact1.Address.City = "Jakarta"
 	contact1.Address.Province = "DKI Jakarta"
 	contact1.Address.Country = "Indonesia"
@@ -70,4 +70,31 @@ func main() {
 	fmt.Println(contact1)
 	fmt.Println(contact1.Phone)
 
+	// Filling value sub struct
+	var contact2 = Contact{
+		Phone: "0821-2222-3333",
+		Email: "people@gmail.com",
+		Address: Address{
+			City:     "Jakarta",
+			Province: "DKI Jakarta",
+			Country:  "",
+		},
+	}
+
+	fmt.Println(contact2)
+
+	fmt.Println("=====================================")
+	type People struct {
+		Name string
+		Age  int
+	}
+
+	type Student struct {
+		People
+		Grade int
+	}
+
+	var people = People{"Doe", 24}
+	var teacher = Student{People: people, Grade: 100}
+	fmt.Println(teacher)
 }
