@@ -118,5 +118,21 @@ func main() {
 	fmt.Println(teacher3)
 
 	fmt.Println("=====================================")
+	// struct with
+	type Fruits struct {
+		Name  string
+		Color string
+	}
 
+	allFruits := []Fruits{
+		{"Apple", "Red"},
+		{"Banana", "Yellow"},
+		{"Grape", "Purple"},
+	}
+
+	for index, fruit := range allFruits {
+		fmt.Println(index+1, ".", fruit.Name, ":", fruit.Color)
+	}
+
+	fmt.Println(allFruits)
 }
