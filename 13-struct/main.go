@@ -97,4 +97,26 @@ func main() {
 	var people = People{"Doe", 24}
 	var teacher = Student{People: people, Grade: 100}
 	fmt.Println(teacher)
+
+	// Anonymous struct
+	var teacher2 = struct {
+		People
+		Grade int
+	}{}
+
+	teacher2.People = People{"Smith", 24}
+	teacher2.Grade = 100
+
+	teacher3 := struct {
+		People
+		Grade int
+	}{
+		People: People{"Mps", 24},
+		Grade:  20,
+	}
+	fmt.Println(teacher2)
+	fmt.Println(teacher3)
+
+	fmt.Println("=====================================")
+
 }
