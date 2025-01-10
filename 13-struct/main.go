@@ -118,7 +118,7 @@ func main() {
 	fmt.Println(teacher3)
 
 	fmt.Println("=====================================")
-	// struct with
+	// struct with slice
 	type Fruits struct {
 		Name  string
 		Color string
@@ -135,4 +135,28 @@ func main() {
 	}
 
 	fmt.Println(allFruits)
+
+	// nested struct
+	type Address2 struct {
+		City, Province, Country string
+	}
+
+	type People2 struct {
+		Name    string
+		Age     int
+		Address Address2
+	}
+
+	var personD = People2{
+		Name: "Doe",
+		Age:  24,
+		Address: Address2{
+			City:     "Jakarta",
+			Province: "DKI Jakarta",
+			Country:  "Indonesia",
+		},
+	}
+
+	fmt.Println(personD)
+
 }
