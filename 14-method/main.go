@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 
 type People struct {
@@ -12,7 +15,14 @@ func (p People) sayHello() {
     fmt.Println("Hello", p.Name)
 }
 
+func (p People) getFirstName(i int) string {
+	return strings.Split(p.Name, " ")[i - 1]
+}
+
 func main(){
-	people := People{"mps", 23}
+	people := People{"putra satria", 23}
 	people.sayHello()
+
+	firstName := people.getFirstName(1)
+	fmt.Println("First Name:", firstName)
 }
