@@ -158,5 +158,26 @@ func main() {
 	}
 
 	fmt.Println(personD)
+	// struct with tag
+	type People3 struct {
+		Name string `tag1`
+		Age  int    `tag2`
+	}
 
+	people3 := People3{"Put", 24}
+	fmt.Println(people3)
+	
+	// struct with type alias
+	type Animal struct {
+		Name string
+		Color string
+	}
+
+	type Animal2 = Animal
+
+	animal1 := Animal{"Cat", "White"}
+	animal2 := Animal2{"Dog", "Black"}
+
+	fmt.Println(animal1)
+	fmt.Println(animal2)
 }
