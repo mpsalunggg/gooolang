@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"learn-golang/15-exported-unexported/animal"
 	"learn-golang/15-exported-unexported/people"
 )
 
@@ -12,4 +13,11 @@ func main() {
 	fmt.Println()
 	// Example of unexported function / private
 	// fmt.Println(people.sayHello("Putra"))
+
+	fmt.Println("=====================================")
+	// Example of exported struct / public
+	animal := animal.Animal{Name: "Dog", Color: "Black"}
+	fmt.Println(animal)
+	// Example of unexported struct / private
+	// animal2 := animal.animal{Name: "Cat", color: "White"}
 }
