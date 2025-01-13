@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"learn-golang/15-exported-unexported/animal"
 	"learn-golang/15-exported-unexported/people"
+	. "learn-golang/15-exported-unexported/fruits"
 )
 
 func main() {
@@ -20,4 +21,17 @@ func main() {
 	fmt.Println(animal)
 	// Example of unexported struct / private
 	// animal2 := animal.animal{Name: "Cat", color: "White"}
+
+	fmt.Println("=====================================")
+	// Example with dot exported
+	fruits := Fruits{
+		Name: "Banana",
+		Color: "Yellow",
+		Type: "Test",
+	}
+
+	fmt.Println(fruits.Name)
+	fmt.Println(fruits.Color)
+	fmt.Println(fruits.Type)
+	
 }
