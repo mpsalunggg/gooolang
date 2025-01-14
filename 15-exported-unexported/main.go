@@ -34,4 +34,6 @@ func main() {
 	fmt.Println(fruits.Color)
 	fmt.Println(fruits.Type)
 	
+	// Example aliases import fmt
+	people.Whatsup("Hellooo gess")
 }
