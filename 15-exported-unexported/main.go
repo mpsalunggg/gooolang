@@ -36,5 +36,5 @@ func main() {
 	
 	// Example aliases import fmt
 	people.Whatsup("Hellooo gess")
-	sayHi()
+	// sayHi()
 }
