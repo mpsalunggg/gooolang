@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"learn-golang/16-interface/example3"
 	"math"
 )
 
@@ -80,4 +81,7 @@ func main() {
 	p.Age = 24
 
 	PrintDescription(p)
+
+	//Example 3
+	example3.Example()
 }
