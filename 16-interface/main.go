@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"learn-golang/16-interface/example2"
 	"learn-golang/16-interface/example3"
 	"math"
 )
@@ -39,23 +40,6 @@ func (p Persegi) keliling() float64 {
 	return p.sisi * 4
 }
 
-type Describer interface {
-	Describe() string
-}
-
-type Person struct {
-	Name string
-	Age  int
-}
-
-func (p *Person) Describe() string {
-	return fmt.Sprintf("Name: %s, Age: %d", p.Name, p.Age)
-}
-
-func PrintDescription(d Describer) {
-	fmt.Println(d.Describe())
-}
-
 func main() {
 	// INTERFACE
 
@@ -74,13 +58,7 @@ func main() {
 
 	fmt.Println("================================")
 	// Example 2
-	p := &Person{Name: "Putra", Age: 23}
-	PrintDescription(p)
-
-	p.Name = "Test"
-	p.Age = 24
-
-	PrintDescription(p)
+	example2.Example()
 
 	//Example 3
 	example3.Example()
