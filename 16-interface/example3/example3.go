@@ -45,4 +45,10 @@ func Example() {
 	myAccount.WithDraw(2000.0)
 
 	myAccount.Deposit(5000.0)
+
+	err := myAccount.WithDraw(200000.00)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
 }
