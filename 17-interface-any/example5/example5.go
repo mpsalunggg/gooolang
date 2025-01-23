@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Tabungan struct {
 	Saldo float64
@@ -12,6 +15,15 @@ type Barang struct {
 	Harga float64
 }
 
+func CariBarangByID(barangList []Barang, id int) (*Barang, error) {
+	for _, barang := range barangList {
+		if barang.ID == id {
+			return &barang, nil
+		}
+	}
+	return nil, errors.New("barang dengan ID tersebut tidak ditemukan")
+}
+
 func main() {
 	tabungan := &Tabungan{Saldo: 100000}
 
@@ -21,6 +33,23 @@ func main() {
 		{ID: 3, Nama: "Keyboard", Harga: 75000},
 	}
 
-	fmt.Println(*tabungan)
+	fmt.Println(tabungan.Saldo)
 	fmt.Println(toko)
+	fmt.Println("========================")
+	fmt.Printf("Saldo awal: Rp.%.2f\n", tabungan.Saldo)
+
+	for _, barang := range toko {
+		fmt.Printf("ID: %d, Nama: %s, Harga: %.2f\n", barang.ID, barang.Nama, barang.Harga)
+	}
+
+	var id int
+	fmt.Print("Masukkan ID barang yang ingin dibeli: ")
+	fmt.Scan(&id)
+
+	barang, err := CariBarangByID(toko, id)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(barang)
+	}
 }
