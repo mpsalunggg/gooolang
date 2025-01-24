@@ -5,6 +5,11 @@ import (
 	"fmt"
 )
 
+type Pembayaran interface {
+	KurangiSaldo(jumlah float64) error
+	CekSaldo() float64
+}
+
 type Tabungan struct {
 	Saldo float64
 }
@@ -15,6 +20,18 @@ type Barang struct {
 	Harga float64
 }
 
+func (t *Tabungan) CekSaldo() float64 {
+	return t.Saldo
+}
+
+func (t *Tabungan) KurangiSaldo(jumlah float64) error {
+	if jumlah > t.Saldo {
+		return errors.New("saldo tidak mencukupi")
+	}
+	t.Saldo -= jumlah
+	return nil
+}
+
 func CariBarangByID(barangList []Barang, id int) (*Barang, error) {
 	for _, barang := range barangList {
 		if barang.ID == id {
@@ -22,6 +39,16 @@ func CariBarangByID(barangList []Barang, id int) (*Barang, error) {
 		}
 	}
 	return nil, errors.New("barang dengan ID tersebut tidak ditemukan")
+}
+
+func BeliBarang(saldo Pembayaran, barang *Barang) error {
+	fmt.Printf("Ingin membeli: %s (Harga: %.2f)\n", barang.Nama, barang.Harga)
+	if err := saldo.KurangiSaldo(barang.Harga); err != nil {
+		return err
+	}
+	
+	fmt.Println("Pembelian berhasil!")
+	return nil
 }
 
 func main() {
@@ -50,6 +77,10 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println(barang)
+		if err := BeliBarang(tabungan, barang); err != nil {
+			fmt.Println("Error:", err)
+		} else {
+			fmt.Printf("Saldo sekarang: %.2f\n", tabungan.Saldo)
+		}
 	}
 }
