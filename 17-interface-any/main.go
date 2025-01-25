@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	// Interface any
@@ -13,10 +16,10 @@ func main() {
 
 	secret = []string{"apple", "mangga", "pineapple"}
 
-	fmt.Println(secret)
+	var gruits = strings.Join(secret.([]string), ", ")
+	fmt.Println(gruits, "is my favorite fruits")
 
-	var data map[string]interface{}
-	data = map[string]interface{}{
+	data := map[string]interface{}{
 		"name":   "mps",
 		"grade":  2,
 		"fruits": []string{"apple", "manggo", "banana"},
@@ -24,7 +27,9 @@ func main() {
 
 	fmt.Println(data)
 
-	var data2 map[string]any
+	data2 := map[string]any{}
+
+	fmt.Println(data2)
 	data2 = map[string]any{
 		"name":      "ethan hunt",
 		"grade":     2,
@@ -32,4 +37,18 @@ func main() {
 	}
 
 	fmt.Println(data2)
+	data2["say"] = "hallooo"
+	fmt.Println(data2["say"])
+
+	fmt.Println("=======================")
+	var fruits = []interface{}{
+		map[string]interface{}{"name": "strawberry", "total": 10},
+		[]string{"manggo", "pineapple", "papaya"},
+		"orange",
+	}
+
+	for _, each := range fruits {
+		fmt.Println(each)
+	}
+
 }
