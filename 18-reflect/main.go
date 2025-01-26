@@ -11,9 +11,13 @@ func main(){
 
 	fmt.Println("type variable : ", reflectValue.Type())
 	fmt.Println(reflectValue.Kind())
-	fmt.Println(reflectValue.Int)
+	fmt.Println(reflectValue.Int())
 
 	if reflectValue.Kind() == reflect.Int {
         fmt.Println("nilai variabel :", reflectValue.Int())
     }
+
+	// Access with interface casting
+	fmt.Println("interface : ",reflectValue.Interface().(int))
+
 }
