@@ -25,7 +25,7 @@ type Restaurant struct {
 }
 
 func main() {
-	people := People{"Putra", 100000}
+	people := People{}
 	restaurant := Restaurant{
 		Name: "Nagaya",
 		Menus: []Menu{
@@ -50,6 +50,11 @@ func main() {
 		return
 	}
 	people.Balance = balance
+
+	fmt.Println("List menu : ")
+	for i, val := range restaurant.Menus {
+		fmt.Printf("%d. %s \t: %f\n", i+1, val.Name, val.Price)
+	}
 
 	fmt.Printf("welcome to the %s restaurant %s :)\n", restaurant.Name, people.Name)
 }
