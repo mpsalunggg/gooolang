@@ -1,6 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"learn-golang/21-error/example2/errors"
+	"os"
+	"strconv"
+	"strings"
+)
 
 type People struct {
 	Name    string
@@ -28,10 +35,21 @@ func main() {
 		},
 	}
 
+	reader := bufio.NewReader(os.Stdin)
+
 	fmt.Print("Enter your name: ")
-	fmt.Scanf("%s", &people.Name)
+	name, _ := reader.ReadString('\n')
+	people.Name = strings.TrimSpace(name)
+
 	fmt.Print("Enter your balance: ")
-	fmt.Scanf("%f", &people.Balance)
+	balanceInput, _ := reader.ReadString('\n')
+	balanceInput = strings.TrimSpace(balanceInput)
+	balance, err := strconv.ParseFloat(balanceInput, 64)
+	if err != nil {
+		fmt.Println(errors.ErrorInputBalance().Error())
+		return
+	}
+	people.Balance = balance
 
 	fmt.Printf("welcome to the %s restaurant %s :)\n", restaurant.Name, people.Name)
 }
