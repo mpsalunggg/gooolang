@@ -23,3 +23,7 @@ func CallError(message string) NewError {
 func ErrorInputBalance() CustomError {
 	return CallError("Sorry your input is not valid")
 }
+
+func ErrorInvalidMenu() error {
+	return CallError("Id menu is not valid!")
+}

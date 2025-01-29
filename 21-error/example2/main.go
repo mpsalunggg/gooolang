@@ -30,6 +30,15 @@ type Restaurant struct {
 	Menus []Menu
 }
 
+func (r *Restaurant) FindByID(id int) (*Menu, error) {
+	for _, menu := range r.Menus {
+		if menu.ID == id {
+			return &menu, nil
+		}
+	}
+	return nil, errors.ErrorInvalidMenu()
+}
+
 func main() {
 	people := People{}
 	restaurant := Restaurant{
@@ -63,4 +72,21 @@ func main() {
 	}
 
 	fmt.Printf("welcome to the %s restaurant %s :)\n", restaurant.Name, people.Name)
+
+	fmt.Print("\nEnter the menu ID you want to buy: ")
+	orderInput, _ := reader.ReadString('\n')
+	orderInput = strings.TrimSpace(orderInput)
+	menuID, err := strconv.Atoi(orderInput)
+	if err != nil {
+		fmt.Println(errors.ErrorInvalidMenu().Error())
+		return
+	}
+
+	menu, err := restaurant.FindByID(menuID)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	fmt.Println("ini menunya :", *menu)
 }
