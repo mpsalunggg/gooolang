@@ -15,8 +15,14 @@ type People struct {
 }
 
 type Menu struct {
+	ID    int
 	Name  string
 	Price float64
+}
+
+type RestaurantService interface {
+	FindByID(id int) (*Menu, error)
+	Purchase(people *People, menu *Menu) error
 }
 
 type Restaurant struct {
@@ -29,9 +35,9 @@ func main() {
 	restaurant := Restaurant{
 		Name: "Nagaya",
 		Menus: []Menu{
-			{Name: "Nasi Goreng", Price: 20000},
-			{Name: "Mie Ayam", Price: 10000},
-			{Name: "Ikan Bakar", Price: 25000},
+			{ID: 1, Name: "Nasi Goreng", Price: 20000},
+			{ID: 2, Name: "Mie Ayam", Price: 10000},
+			{ID: 3, Name: "Ikan Bakar", Price: 25000},
 		},
 	}
 
