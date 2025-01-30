@@ -24,6 +24,10 @@ func ErrorInputBalance() CustomError {
 	return CallError("Sorry your input is not valid")
 }
 
-func ErrorInvalidMenu() error {
+func ErrorInvalidMenu() CustomError {
 	return CallError("Id menu is not valid!")
+}
+
+func ErrorBalanceNotEnough() CustomError {
+	return CallError("Sorry your money is not enough!")
 }

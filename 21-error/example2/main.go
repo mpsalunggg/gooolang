@@ -39,6 +39,16 @@ func (r *Restaurant) FindByID(id int) (*Menu, error) {
 	return nil, errors.ErrorInvalidMenu()
 }
 
+func (r *Restaurant) Purchase(people *People, menu *Menu) error {
+	if people.Balance < menu.Price {
+		return errors.ErrorBalanceNotEnough()
+	}
+
+	people.Balance -= menu.Price
+	fmt.Println("Thank you for purchasing:)")
+	return nil
+}
+
 func main() {
 	people := People{}
 	restaurant := Restaurant{
@@ -88,5 +98,14 @@ func main() {
 		return
 	}
 
-	fmt.Println("ini menunya :", *menu)
+	err = restaurant.Purchase(&people, menu)
+
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	fmt.Println("==============================")
+
+	fmt.Println("yeyyyyy...")
 }
