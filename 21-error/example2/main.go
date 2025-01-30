@@ -7,6 +7,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/leekchan/accounting"
 )
 
 type People struct {
@@ -107,5 +109,11 @@ func main() {
 
 	fmt.Println("==============================")
 
-	fmt.Println("yeyyyyy...")
+	ac := accounting.Accounting{
+		Symbol:    "Rp",
+		Precision: 0,
+		Thousand:  ".",
+		Decimal:   ",",
+	}
+	fmt.Printf("your money left %s\n", ac.FormatMoney(people.Balance))
 }
