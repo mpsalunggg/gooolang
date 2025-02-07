@@ -28,3 +28,15 @@ func TestSayHelloPeopleWithRequire(t *testing.T) {
 	// if the require is not passed, the test will be stopped and the message will be printed
 	fmt.Println("TestSayHelloPeopleWithRequire passed")
 }
+
+func TestGreetPeople(t *testing.T) {
+	names := []string{"John", "Jane", "Jim"}
+	greeting := "Hello"
+	result := GreetPeople(names, greeting)
+
+	assert.Equal(t, []string{"Hello, John", "Hello, Jane", "Hello, Jim"}, result)
+
+	assert.Contains(t, result, "Hello, John")
+	assert.Contains(t, result, "Hello, Jane")
+	assert.Contains(t, result, "Hello, Jim")
+}
