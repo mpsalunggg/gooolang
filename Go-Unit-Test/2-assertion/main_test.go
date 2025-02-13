@@ -40,3 +40,12 @@ func TestGreetPeople(t *testing.T) {
 	assert.Contains(t, result, "Hello, Jane")
 	assert.Contains(t, result, "Hello, Jim")
 }
+
+func SkipTest(t *testing.T) {
+	skip := true
+	if skip {
+		t.Skip("Skip this test")
+	}
+
+	assert.Equal(t, "Hello, John", SayHelloPeople("John"))
+}
