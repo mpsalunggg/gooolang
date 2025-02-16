@@ -41,11 +41,19 @@ func TestGreetPeople(t *testing.T) {
 	assert.Contains(t, result, "Hello, Jim")
 }
 
-func SkipTest(t *testing.T) {
+func TestSkip(t *testing.T) {
 	skip := true
 	if skip {
 		t.Skip("Skip this test")
 	}
 
 	assert.Equal(t, "Hello, John", SayHelloPeople("John"))
+}
+
+func TestMain(m *testing.M) {
+	fmt.Println("Befor testing")
+
+	m.Run()
+
+	fmt.Println("After testing")
 }
