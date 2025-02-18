@@ -57,3 +57,17 @@ func TestMain(m *testing.M) {
 
 	fmt.Println("After testing")
 }
+
+func TestSum(t *testing.T) {
+	t.Run("2+3", func(t *testing.T) {
+		if result := Sum(2, 3); result != 5 {
+			t.Errorf("expected 5, got %d", result)
+		}
+	})
+
+	t.Run("4+6", func(t *testing.T) {
+		if result := Sum(4, 6); result != 10 {
+			t.Errorf("expected 10, got %d", result)
+		}
+	})
+}

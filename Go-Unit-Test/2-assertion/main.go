@@ -14,7 +14,12 @@ func GreetPeople(names []string, greeting string) []string {
 	return greetings
 }
 
+func Sum(a, b int) int {
+	return a + b
+}
+
 func main() {
 	fmt.Println(SayHelloPeople("John"))
 	fmt.Println(GreetPeople([]string{"John", "Jane", "Jim"}, "Hello"))
+	fmt.Println(Sum(2, 3))
 }
