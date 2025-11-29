@@ -145,6 +145,26 @@ type Task struct {
 
 func main() {
     // Buat instance struct
+    // Pada Go, field struct harus diawali huruf kapital (uppercase) agar bisa diakses dari luar package (exported). 
+    // Jika memakai lowercase (misal: id, nama, email, umur), field itu hanya bisa diakses dalam package yang sama (unexported).
+    // Karena struct ini biasanya juga ingin diakses dari package luar, maka digunakan huruf kapital.
+
+    /* Contoh jika pakai lowercase (tidak direkomendasikan untuk exported struct):
+
+    type User struct {
+        id    int
+        nama  string
+        email string
+        umur  int
+    }
+
+    user1 := User{
+        id:    1,
+        nama:  "Ahmad",
+        email: "ahmad@mail.com",
+        umur:  25,
+    }
+    */
     user1 := User{
         ID:    1,
         Nama:  "Ahmad",
