@@ -6,3 +6,9 @@ type Tasks struct {
 	Description string
 	Completed bool
 }
+
+type CreateTaskRequest struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Completed   bool   `json:"completed"`
+}
