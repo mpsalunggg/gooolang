@@ -1,0 +1,110 @@
+### API Testing Module 6 - Task Management
+### Base URL
+@baseUrl = http://localhost:8181
+
+###############################################
+# 1. GET ALL TASKS
+###############################################
+
+### Get All Tasks
+GET {{baseUrl}}/tasks
+Content-Type: application/json
+
+###############################################
+# 2. CREATE TASK (POST)
+###############################################
+
+### Create Task - Example 1
+POST {{baseUrl}}/tasks
+Content-Type: application/json
+
+{
+  "title": "Belajar Golang",
+  "description": "Menyelesaikan module 6 tentang JSON dan REST API",
+  "status": "pending"
+}
+
+### Create Task - Example 2
+POST {{baseUrl}}/tasks
+Content-Type: application/json
+
+{
+  "title": "Code Review",
+  "description": "Review pull request dari tim",
+  "status": "in_progress"
+}
+
+### Create Task - Example 3
+POST {{baseUrl}}/tasks
+Content-Type: application/json
+
+{
+  "title": "Deploy ke Production",
+  "description": "Deploy aplikasi versi 2.0",
+  "status": "completed"
+}
+
+###############################################
+# 3. GET TASK BY ID
+###############################################
+
+### Get Task by ID - Task 1
+GET {{baseUrl}}/tasks/1
+Content-Type: application/json
+
+### Get Task by ID - Task 2
+GET {{baseUrl}}/tasks/2
+Content-Type: application/json
+
+### Get Task by ID - Not Found
+GET {{baseUrl}}/tasks/999
+Content-Type: application/json
+
+###############################################
+# 4. UPDATE TASK (PUT)
+###############################################
+
+### Update Task - Change Status to Completed
+PUT {{baseUrl}}/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Belajar Golang - Updatsdasdsaedasdd",
+  "description": "Sudah selesai module 6",
+  "status": "completed"
+}
+
+### Update Task - Example 2
+PUT {{baseUrl}}/tasks/2
+Content-Type: application/json
+
+{
+  "title": "Code Review - Updated",
+  "description": "Review sudah selesai, approved",
+  "status": "completed"
+}
+
+###############################################
+# 5. ERROR TESTING
+###############################################
+
+### Test Method Not Allowed
+PATCH {{baseUrl}}/tasks
+Content-Type: application/json
+
+### Test Invalid ID
+GET {{baseUrl}}/tasks/abc
+Content-Type: application/json
+
+### Test Invalid JSON
+POST {{baseUrl}}/tasks
+Content-Type: application/json
+
+{
+  "title": "Invalid"
+  "description": "Missing comma"
+}
+
+### Delete Task
+DELETE {{baseUrl}}/tasks/1
+Content-Type: application/json
