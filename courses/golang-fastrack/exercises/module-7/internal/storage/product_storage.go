@@ -40,3 +40,19 @@ func (ps *ProductStorage) GetAll() []models.Product {
 	}
 	return products
 }
+
+func (ps *ProductStorage) Create(product models.CreateProductRequest) models.Product {
+	newProduct := models.Product{
+		ID:          ps.nextID,
+		Name:        product.Name,
+		Description: product.Description,
+		Price:       product.Price,
+		Stock:       product.Stock,
+		SKU:         product.SKU,
+		Category:    product.Category,
+		CreatedAt:   time.Now(),
+	}
+	ps.products[ps.nextID] = newProduct
+	ps.nextID++
+	return newProduct
+}
