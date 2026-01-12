@@ -1,6 +1,7 @@
 package storage
 
 import (
+	"fmt"
 	"module-7/internal/models"
 	"time"
 )
@@ -39,6 +40,16 @@ func (ps *ProductStorage) GetAll() []models.Product {
 		products = append(products, product)
 	}
 	return products
+}
+
+func (ps *ProductStorage) GetByID(id int) (*models.Product, error) {
+	product, exists := ps.products[id]
+
+	if !exists {
+		return nil, fmt.Errorf("produk dengan ID %d tidak ditemukan", id)
+	}
+
+	return &product, nil
 }
 
 func (ps *ProductStorage) Create(product models.CreateProductRequest) models.Product {
