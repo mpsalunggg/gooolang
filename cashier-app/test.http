@@ -1,0 +1,28 @@
+GET http://localhost:8000/health
+
+###
+GET http://localhost:8000/api/v1/products
+
+###
+POST http://localhost:8000/api/v1/products
+Content-Type: application/json
+
+{
+	"id": 4,
+	"name": "Product 4",
+	"price": 40000,
+	"stock": 40
+}
+
+###
+PUT http://localhost:8000/api/v1/products/4
+Content-Type: application/json
+
+{
+	"name": "Product 4 Updatesdsdd",
+	"price": 40000,
+	"stock": 40
+}
+
+###
+DELETE http://localhost:8000/api/v1/products/4
