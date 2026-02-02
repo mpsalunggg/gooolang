@@ -168,10 +168,29 @@ func TestSelectChannel(t *testing.T) {
 		case data := <-channel2:
 			fmt.Println("Data from channel2", data)
 			counter++
+		default:
+			fmt.Println("waiting..")
 		}
 
 		if counter == 2 {
 			break
 		}
+	}
+}
+
+func TestSelectChannel2(t *testing.T) {
+	channel := make(chan string)
+
+	go func() {
+		time.Sleep(3 * time.Second)
+		channel <- "Hello"
+	}()
+
+	// data from channel not executed because the time is 2 second
+	select {
+	case data := <-channel:
+		fmt.Println("Data from channel", data)
+	case <-time.After(2 * time.Second):
+		fmt.Println("Timeout")
 	}
 }
