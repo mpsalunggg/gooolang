@@ -8,7 +8,7 @@ import (
 )
 
 func RunConnection() *sql.DB {
-	dsn := "root:rootpass123@tcp(localhost:3306)/belajargolang"
+	dsn := "golang:golang123@tcp(localhost:3307)/belajargolang"
 	db, err := sql.Open("mysql", dsn)
 
 	if err != nil {
