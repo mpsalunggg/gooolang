@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"testing"
+	"time"
 )
 
 func TestExecSql(t *testing.T) {
@@ -46,5 +47,36 @@ func TestQuerySql(t *testing.T) {
 
 		fmt.Println("Id: ", id)
 		fmt.Println("Name: ", name)
+	}
+}
+
+func TestQuerySqlComplex(t *testing.T) {
+	db := RunConnection()
+	defer db.Close()
+
+	ctx := context.Background()
+
+	script := "SELECT id, name, email, balance, rating, created_at, birth_date, married FROM customer"
+	rows, err := db.QueryContext(ctx, script)
+
+	if err != nil {
+		panic(err)
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		var id, name, email string
+		var balance int32
+		var rating float64
+		var birth_date, created_at time.Time
+		var married bool
+
+		err := rows.Scan(&id, &name, &email, &balance, &rating, &created_at, &birth_date, &married)
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Println("Id:", id, "Name:", name, "Email:", email, "Balance:", balance, "Rating:", rating, "Birth Date:", birth_date, "Married:", married, "Created At:", created_at)
 	}
 }
