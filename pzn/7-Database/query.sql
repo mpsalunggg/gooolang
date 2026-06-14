@@ -25,4 +25,10 @@
 --     password VARCHAR(100) NOT NULL
 -- );
 
-INSERT INTO user (username, password) VALUES ('putra', 'test123');
+-- INSERT INTO user (username, password) VALUES ('putra', 'test123');
+
+CREATE TABLE comment (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL,
+    comment TEXT NOT NULL
+);

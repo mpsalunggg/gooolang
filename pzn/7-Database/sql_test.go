@@ -131,3 +131,45 @@ func TestSqlInjection(t *testing.T) {
 		fmt.Println("Login Failed")
 	}
 }
+
+func TestExecParameter(t *testing.T) {
+	db := RunConnection()
+	defer db.Close()
+
+	ctx := context.Background()
+
+	username := "mps"
+	password := "mps"
+	script := "INSERT INTO customer(id, name) VALUES(?, ?)"
+
+	_, err := db.ExecContext(ctx, script, username, password)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Success insert data")
+}
+
+func TestAutoIncrement(t *testing.T) {
+	db := RunConnection()
+	defer db.Close()
+
+	ctx := context.Background()
+
+	email := "mps@gmail.com"
+	comment := "mps"
+	script := "INSERT INTO comment(email, comment) VALUES(?, ?)"
+
+	result, err := db.ExecContext(ctx, script, email, comment)
+	if err != nil {
+		panic(err)
+	}
+
+	insertId, err := result.LastInsertId()
+
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Success insert data with ID :", insertId)
+}
