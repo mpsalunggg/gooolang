@@ -2,6 +2,7 @@ package database
 
 import (
 	"context"
+	"database/sql"
 	"fmt"
 	"testing"
 	"time"
@@ -66,17 +67,36 @@ func TestQuerySqlComplex(t *testing.T) {
 	defer rows.Close()
 
 	for rows.Next() {
-		var id, name, email string
-		var balance int32
-		var rating float64
-		var birth_date, created_at time.Time
-		var married bool
+		var id, name string
+		var email sql.NullString
+		var balance sql.NullInt32
+		var rating sql.NullFloat64
+		var created_at time.Time
+		var birth_date sql.NullTime
+		var married sql.NullBool
 
 		err := rows.Scan(&id, &name, &email, &balance, &rating, &created_at, &birth_date, &married)
 		if err != nil {
 			panic(err)
 		}
-
-		fmt.Println("Id:", id, "Name:", name, "Email:", email, "Balance:", balance, "Rating:", rating, "Birth Date:", birth_date, "Married:", married, "Created At:", created_at)
+		fmt.Println("===============")
+		fmt.Println("Id:", id)
+		fmt.Println("Name:", name)
+		if email.Valid {
+			fmt.Println("Email:", email)
+		}
+		if balance.Valid {
+			fmt.Println("Balance:", balance)
+		}
+		if rating.Valid {
+			fmt.Println("Rating:", rating)
+		}
+		if birth_date.Valid {
+			fmt.Println("Birth Date:", birth_date)
+		}
+		if married.Valid {
+			fmt.Println("Married:", married)
+		}
+		fmt.Println("Created At:", created_at)
 	}
 }
