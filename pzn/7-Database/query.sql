@@ -16,7 +16,13 @@
 --       ('id2', 'Bob Jones', 'bob@example.com', 5000, 3.8, CURRENT_TIMESTAMP, '1988-06-23', true),
 --       ('id3', 'Charlie Evans', 'charlie@example.com', 25000, 4.9, CURRENT_TIMESTAMP, '1990-09-15', false);
 
-INSERT INTO customer (id, name, email, balance, rating, created_at, birth_date, married) VALUES
-    ('id4', 'Dewi Kurnia', NULL, NULL, NULL, CURRENT_TIMESTAMP, NULL, NULL);
+-- INSERT INTO customer (id, name, email, balance, rating, created_at, birth_date, married) VALUES
+--     ('id4', 'Dewi Kurnia', NULL, NULL, NULL, CURRENT_TIMESTAMP, NULL, NULL);
  
  
+-- CREATE TABLE user (
+--     username VARCHAR(100) NOT NULL,
+--     password VARCHAR(100) NOT NULL
+-- );
+
+INSERT INTO user (username, password) VALUES ('putra', 'test123');
