@@ -173,3 +173,35 @@ func TestAutoIncrement(t *testing.T) {
 
 	fmt.Println("Success insert data with ID :", insertId)
 }
+
+func TestPrepareStatement(t *testing.T) {
+	db := RunConnection()
+	defer db.Close()
+
+	ctx := context.Background()
+	script := "INSERT INTO comment(email, comment) VALUES(?, ?)"
+	statement, err := db.PrepareContext(ctx, script)
+
+	if err != nil {
+		panic(err)
+	}
+
+	defer statement.Close()
+
+	for i := range 4 {
+		email := fmt.Sprintf("user%d@example.com", i)
+		result, err := statement.ExecContext(ctx, email, "comment "+fmt.Sprintf("%d", i))
+
+		if err != nil {
+			panic(err)
+		}
+
+		id, err := result.LastInsertId()
+
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Println("Commnt ID :", id)
+	}
+}
