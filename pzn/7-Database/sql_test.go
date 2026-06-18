@@ -205,3 +205,36 @@ func TestPrepareStatement(t *testing.T) {
 		fmt.Println("Commnt ID :", id)
 	}
 }
+
+func TestTransaction(t *testing.T) {
+	db := RunConnection()
+	defer db.Close()
+
+	ctx := context.Background()
+
+	tx, err := db.Begin()
+	if err != nil {
+		panic(err)
+	}
+
+	script := "INSERT INTO comment(email, comment) VALUES (?, ?)"
+
+	for i := 0; i < 5; i++ {
+		email := fmt.Sprintf("user%d@example.com", i)
+		result, err := tx.ExecContext(ctx, script, email, "comment "+fmt.Sprintf("%d", i))
+
+		if err != nil {
+			panic(err)
+		}
+
+		id, err := result.LastInsertId()
+
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Println("Commnt ID :", id)
+	}
+
+	tx.Commit()
+}
