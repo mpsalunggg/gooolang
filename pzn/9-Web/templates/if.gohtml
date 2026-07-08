@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+</head>
+<body>
+    {{if .Name}}
+        <h1>Hello, {{.Name}}!</h1>
+    {{else}}
+        <h1>Hello, Guest!</h1>
+    {{end}}
+
+    {{if .Age}}
+        {{if gt .Age 18}}
+            <p>You are over 18 years old.</p>
+        {{else}}
+            <p>You are 18 or younger.</p>
+        {{end}}
+    {{else}}
+        <p>Age is not provided.</p>
+    {{end}}
+</body>
+</html>
