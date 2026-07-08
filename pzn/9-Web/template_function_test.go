@@ -75,3 +75,31 @@ func TestTemplateFunctionCustom(t *testing.T) {
 	body, _ := io.ReadAll(response.Body)
 	fmt.Println(string(body))
 }
+
+// Pipeline: menyalurkan hasil ke function berikutnya lewat tanda `|`.
+func TemplateFunctionPipeline(w http.ResponseWriter, r *http.Request) {
+	t := template.Must(template.New("function_pipeline.gohtml").Funcs(template.FuncMap{
+		"upper": func(value string) string {
+			return strings.ToUpper(value)
+		},
+		"sayHello": func(value string) string {
+			return "Hello, " + value + "!"
+		},
+	}).ParseFiles("./templates/function_pipeline.gohtml"))
+
+	t.ExecuteTemplate(w, "function_pipeline.gohtml", map[string]any{
+		"Title": "Template Function Pipeline",
+		"Name":  "Mps",
+	})
+}
+
+func TestTemplateFunctionPipeline(t *testing.T) {
+	request := httptest.NewRequest(http.MethodGet, "http://localhost:8181", nil)
+	recorder := httptest.NewRecorder()
+
+	TemplateFunctionPipeline(recorder, request)
+
+	response := recorder.Result()
+	body, _ := io.ReadAll(response.Body)
+	fmt.Println(string(body))
+}

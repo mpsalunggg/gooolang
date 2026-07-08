@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+</head>
+<body>
+    <p>Original : {{.Name}}</p>
+    <p>Upper : {{.Name | upper}}</p>
+    <p>Upper + Sapa : {{.Name | upper | sayHello}}</p>
+    <p>Nested : {{sayHello (upper .Name)}}</p>
+</body>
+</html>
