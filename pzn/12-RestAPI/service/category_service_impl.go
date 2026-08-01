@@ -7,14 +7,20 @@ import (
 	"restapi/model/domain"
 	"restapi/model/web"
 	"restapi/repository"
+
+	"github.com/go-playground/validator/v10"
 )
 
 type CategoryServiceImpl struct {
 	CategoryRepository repository.CategoryRepository
 	DB                 *sql.DB
+	Validate           *validator.Validate
 }
 
 func (s *CategoryServiceImpl) Create(ctx context.Context, request web.CategoryCreateRequest) web.CategoryResponse {
+	err := s.Validate.Struct(request)
+	helper.PanicIfError(err)
+
 	tx, err := s.DB.Begin()
 	helper.PanicIfError(err)
 	defer helper.CommitOrRollback(tx)
@@ -29,6 +35,9 @@ func (s *CategoryServiceImpl) Create(ctx context.Context, request web.CategoryCr
 }
 
 func (s *CategoryServiceImpl) Update(ctx context.Context, request web.CategoryUpdateRequest) web.CategoryResponse {
+	err := s.Validate.Struct(request)
+	helper.PanicIfError(err)
+
 	tx, err := s.DB.Begin()
 	helper.PanicIfError(err)
 	defer helper.CommitOrRollback(tx)
