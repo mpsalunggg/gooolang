@@ -6,6 +6,7 @@ import (
 	"restapi/controller"
 	"restapi/exception"
 	"restapi/helper"
+	"restapi/middleware"
 	"restapi/repository"
 	"restapi/service"
 
@@ -34,7 +35,7 @@ func main() {
 
 	server := http.Server{
 		Addr:    "localhost:8181",
-		Handler: router,
+		Handler: middleware.NewAuthMiddleware(router),
 	}
 
 	err := server.ListenAndServe()
